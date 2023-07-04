@@ -17,3 +17,5 @@ The pull request will merge automatically when all **required reviews** are met 
 After you enable auto-merge for a pull request, if **someone who does not have write permissions** to the repository **pushes new changes to the head branch or switches the base branch** of the pull request, **auto-merge will be disabled**.
 
 [Managing auto-merge for pull requests in your repository](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/managing-auto-merge-for-pull-requests-in-your-repository)
+
+## Merging using Github workflow

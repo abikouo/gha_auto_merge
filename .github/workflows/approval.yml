@@ -11,6 +11,12 @@ on:
       pr_number:
         description: The pull request number to approve
         required: true
+      state:
+        type: choice
+        description: Whether to approve or request changes on pull request.
+        options: 
+        - approve
+        - request_changes
 
 jobs:
   approve:
@@ -26,3 +32,10 @@ jobs:
         run: gh pr review ${{ inputs.pr_number }} --approve
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        if: ${{ inputs.state == 'approve' }}
+
+      - name: Request changes on pull request
+        run: gh pr review ${{ inputs.pr_number }} --request-changes -b "needs more work"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        if: ${{ inputs.state == 'request_changes' }}

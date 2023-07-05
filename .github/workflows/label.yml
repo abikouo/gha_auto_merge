@@ -24,11 +24,7 @@ jobs:
       pull-requests: write
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout the repository
-        uses: actions/checkout@v3
-
-      - name: add label to the pull request
+      - name: "add label ${{ inputs.name }} to pull request ${{ inputs.id }}"
         run: gh pr edit ${{ inputs.id }} --add-label "${{ inputs.name }}"
         env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
-        shell: bash
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -7,10 +7,10 @@ from configparser import NoSectionError, NoOptionError
 
 def main():
     config = ConfigParser()
-    config.read("/tmp/config.ini")
+    config.read('/tmp/config.ini')
 
     try:
-        config.get("testing", "name")
+        config.get('testing', 'name')
     except NoSectionError:
         pass
     except NoOptionError:

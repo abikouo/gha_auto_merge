@@ -10,7 +10,7 @@ def main():
     config.read("/tmp/config.ini")
 
     try:
-        config.get("testing", "name")
+        config.get('testing', "name")
     except NoSectionError:
         pass
     except NoOptionError:

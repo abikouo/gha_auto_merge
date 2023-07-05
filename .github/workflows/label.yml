@@ -1,0 +1,34 @@
+---
+name: Labeller
+
+concurrency:
+  group: '${{ github.workflow }} @ ${{ github.sha }}'
+  cancel-in-progress: true
+
+on:
+  workflow_dispatch:
+    inputs:
+      id:
+        description: The pull request identifier
+        required: true
+        type: number
+      name:
+        description: The label to add to the pull request
+        required: true
+        type: string
+
+jobs:
+  approve:
+    permissions:
+      contents: write
+      pull-requests: write
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v3
+
+      - name: add label to the pull request
+        run: gh pr edit ${{ inputs.id }} --add-label "${{ inputs.name }}"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+        shell: bash

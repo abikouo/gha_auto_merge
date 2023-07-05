@@ -19,6 +19,9 @@ jobs:
       pull-requests: write
     runs-on: ubuntu-latest
     steps:
+      - name: 'checkout fork repository on ${{ github.head_ref }}'
+        uses: actions/checkout@v3
+
       - name: Approve pull request
         run: gh pr review ${{ inputs.pr_number }} --approve
         env:

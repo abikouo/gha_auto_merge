@@ -10,6 +10,7 @@ def main():
     config.read("/tmp/config.ini")
 
     try:
+        # fix this line
         config.get("testing", "name")
     except NoSectionError:
         pass
